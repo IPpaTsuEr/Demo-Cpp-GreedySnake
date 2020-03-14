@@ -39,24 +39,9 @@ public:
 		CONSOLE_CURSOR_INFO cci;
 		cci.bVisible = 0;
 		cci.dwSize = 1;
-		
+
 		SetConsoleCursorInfo(OutPut, &cci);
-
-
-		int nNumFont;
-
-		SetConsoleFont = (PROCSETCONSOLEFONT)GetProcAddress(hKernel32, "SetConsoleFont");
-		GetConsoleFontInfo = (PROCGETCONSOLEFONTINFO)GetProcAddress(hKernel32, "GetConsoleFontInfo");
-		GConsoleFontSize = (PROCGETCONSOLEFONTSIZE)GetProcAddress(hKernel32, "GetConsoleFontSize");
-		GetNumberOfConsoleFonts = (PROCGETNUMBEROFCONSOLEFONTS)GetProcAddress(hKernel32, "GetNumberOfConsoleFonts");
-		GCurrentConsoleFont = (PROCGETCURRENTCONSOLEFONT)GetProcAddress(hKernel32, "GetCurrentConsoleFont");
-
-		nNumFont = GetNumberOfConsoleFonts();
-		CONSOLE_FONT *pFonts = new CONSOLE_FONT[nNumFont];
-		GetConsoleFontInfo(OutPut, 0, nNumFont, pFonts);
-
-		//SetConsoleFont(OutPut, pFonts[1].index);
-		
+		SetConsoleFont(OutPut, 0);
 	};
 	bool CheckDeath();
 	bool CheckFood();
